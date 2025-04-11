@@ -7,7 +7,6 @@ export const appRouter = router({
     test: publicProcedure.query(
       async () => {
         const data = await db.select().from(categories).limit(1);
-        await client.end();
         return data;
       },
     ),
