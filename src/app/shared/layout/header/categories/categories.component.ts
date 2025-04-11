@@ -26,7 +26,7 @@ import { SubcategoriesComponent } from './subcategories.component';
     SubcategoriesComponent,
   ],
   template: `
-    <button
+    <!-- <button
       size="sm"
       variant="ghost"
       [brnMenuTriggerFor]="categoriesTpl"
@@ -65,7 +65,7 @@ import { SubcategoriesComponent } from './subcategories.component';
           <p>An error occurred...</p>
         }
       </hlm-menu>
-    </ng-template>
+    </ng-template> -->
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
