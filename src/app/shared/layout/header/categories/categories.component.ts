@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CategoriesService } from './categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CategoriesComponent {}
+export class CategoriesComponent {
+  private categoriesService = inject(CategoriesService);
+}
