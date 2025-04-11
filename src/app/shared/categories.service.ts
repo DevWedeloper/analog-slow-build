@@ -1,25 +1,26 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { filter, map, materialize, merge, share, shareReplay } from 'rxjs';
-import { TrpcClient } from 'src/trpc-client';
 import {
-  errorStream,
-  initialLoading,
-  successStream,
-} from './utils/rxjs';
+  delay,
+  filter,
+  map,
+  materialize,
+  merge,
+  of,
+  share,
+  shareReplay,
+} from 'rxjs';
+import { errorStream, initialLoading, successStream } from './utils/rxjs';
 import { showError } from './utils/toast';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesService {
-  private _trpc = inject(TrpcClient);
   private PLATFORM_ID = inject(PLATFORM_ID);
 
-  private categories$ = this._trpc.categories.getTree
-    .query()
-    .pipe(materialize(), share());
+  private categories$ = of([]).pipe(delay(300), materialize(), share());
 
   private categoriesSuccess$ = this.categories$.pipe(
     successStream(),
