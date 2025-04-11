@@ -8,7 +8,11 @@ export type CategoryWithSubcategories = Categories & {
 export const getCategoryTree = async (): Promise<
   CategoryWithSubcategories[]
 > => {
+  console.time('getAllCategories');
   const categoriesData = await getAllCategories();
+  console.timeEnd('getAllCategories');
+
+  console.time('buildCategoryTree');
 
   const buildCategoryTree = (
     categories: Categories[],
@@ -23,5 +27,8 @@ export const getCategoryTree = async (): Promise<
   };
 
   const categoryTree = buildCategoryTree(categoriesData);
+
+  console.timeEnd('buildCategoryTree');
+
   return categoryTree;
 };

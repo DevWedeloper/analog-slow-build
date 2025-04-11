@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { filter, map, materialize, merge, share, shareReplay } from 'rxjs';
+import { filter, map, materialize, merge, share, shareReplay, tap } from 'rxjs';
 import { TrpcClient } from 'src/trpc-client';
 import {
   errorStream,
@@ -23,6 +23,7 @@ export class CategoriesService {
 
   private categoriesSuccess$ = this.categories$.pipe(
     successStream(),
+    tap((data) => console.log('Categories:', data)),
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
