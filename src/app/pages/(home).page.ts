@@ -35,6 +35,7 @@ export const routeMeta: RouteMeta = {
   ],
   providers: [provideIcons({ lucideList, lucideSearch })],
   template: `
+    <app-header />
     <main class="p-4 md:p-8">
       <section class="flex h-64 items-center justify-center">
         <div class="text-center">
