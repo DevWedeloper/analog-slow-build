@@ -22,48 +22,17 @@ export default defineConfig(({ mode }) => ({
   optimizeDeps: {
     include: [
       '@angular/common',
-      '@angular/forms',
-      '@angular/cdk/clipboard',
-      '@angular/cdk/drag-drop',
-      '@angular/cdk/layout',
-      '@angular/cdk/observers',
-    
+
       '@analogjs/trpc',
-    
-      '@supabase/ssr',
-    
-      '@spartan-ng/brain/**',
-    
-      'ngx-scrollbar',
-      'ngx-sonner',
-      'ngx-stripe',
-      'embla-carousel-angular',
-      'ngx-image-cropper',
-      '@ng-icons/core',
-      '@ng-icons/lucide',
-      'class-variance-authority',
-    
-      'lodash-es',
-      'pica',
+
       'isomorphic-fetch',
-      'zod',
-      'blurhash',
-      'canvas',
-    
-      'drizzle-zod',
+
       'drizzle-orm',
       'drizzle-orm/pg-core',
     ],
   },
   ssr: {
-    noExternal: [
-      '@analogjs/trpc',
-      '@trpc/server',
-      '@spartan-ng/**',
-      '@ng-icons/**',
-      'ngx-scrollbar',
-      'ngx-sonner',
-    ],
+    noExternal: ['@analogjs/trpc', '@trpc/server'],
   },
   plugins: [
     analog({
