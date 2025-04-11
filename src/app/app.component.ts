@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CategoriesService } from './shared/categories.service';
+import { take } from 'rxjs';
+import { TrpcClient } from 'src/trpc-client';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,9 @@ import { CategoriesService } from './shared/categories.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  private categoriesService = inject(CategoriesService);
+  private _trpc = inject(TrpcClient);
+
+  constructor() {
+    this._trpc.categories.getTree.query().pipe(take(1)).subscribe(console.log);
+  }
 }
